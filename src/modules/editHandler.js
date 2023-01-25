@@ -3,6 +3,7 @@ import createEditElement from './editTodo.js';
 import Todo from './todo.js';
 import createCheckboxElement from './checkboxElement.js';
 
+
 const editHandler = (e) => {
   e.preventDefault();
   // Update Todo
@@ -12,13 +13,16 @@ const editHandler = (e) => {
   const todo = Todo.getTodo(indexTodo);
   todo.description = inputElement.value;
   Todo.updateTodo(todo);
+
   // Create showElement
   const showElement = document.createElement('li');
   showElement.setAttribute('id', todo.index);
+
   // Create menuElement
   const menuElement = new Image();
   menuElement.src = Menu;
   menuElement.setAttribute('class', 'icon');
+
   // Add menuElement eventListener
   menuElement.addEventListener('click', (e) => {
     const showElement = e.target.parentElement;
@@ -28,6 +32,7 @@ const editHandler = (e) => {
     const todoList = showElement.parentElement;
     todoList.replaceChild(editElement, showElement);
   });
+
   const labelElement = document.createElement('label');
   const checkboxElement = createCheckboxElement(todo.completed);
   if (todo.completed) {
@@ -35,8 +40,10 @@ const editHandler = (e) => {
   } else {
     showElement.classList.remove('completed');
   }
+
   labelElement.appendChild(checkboxElement);
   const descriptionElement = document.createElement('span');
+  
   descriptionElement.innerText = todo.description;
   labelElement.appendChild(descriptionElement);
   showElement.appendChild(labelElement);

@@ -1,5 +1,6 @@
 import { getData, storeData } from './data.js';
 import Todo from './todo.js';
+
 const clearAllCompletedHandler = (e) => {
   e.preventDefault();
   let todosList = getData();
